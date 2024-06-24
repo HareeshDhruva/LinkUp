@@ -15,7 +15,7 @@ export const SocketContextProvider = ({ children }) => {
 
   useEffect(() => {
     if (authUser) {
-      const socketInstance = io(import.meta.env.VITE_API_URL, {
+      const socketInstance = io("https://linkup-z5pz.onrender.com", {
         query: { userId: authUser._id },
       });
 
