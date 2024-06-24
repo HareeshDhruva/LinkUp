@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+::-webkit-scrollbar {
+    width: 1px;
+    visibility: hidden;
+  }
+  
+  ::-webkit-scrollbar {
+    display: block;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    border-radius: 10%;
+    visibility: hidden;
+  }
