@@ -8,7 +8,7 @@
     "start": "nodemon backend/index.js",
     "prod": "node backend/index.js",
     "test": "mocha",
-    "build": "pnpm install && pnpm install --prefix frontend && pnpm run build --prefix frontend"
+    "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend"
   },
   "keywords": [],
   "author": "",
