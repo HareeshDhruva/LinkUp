@@ -13,9 +13,11 @@ export const SocketContextProvider = ({ children }) => {
   const [onlineUsers, setOnlineUsers] = useState([]);
   const { authUser } = useAuthContext();
 
+  // https://linkup-z5pz.onrender.com
+
   useEffect(() => {
     if (authUser) {
-      const socketInstance = io("https://linkup-z5pz.onrender.com", {
+      const socketInstance = io("http://localhost:8000", {
         query: { userId: authUser._id },
       });
 

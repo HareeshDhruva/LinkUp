@@ -11,6 +11,7 @@ import messageRoute from "./router/message.js";
 import userRoute from "./router/users.js";
 import { connection } from "./DB/connection.js";
 import { server, app } from "./socket/socket.js";
+import updateRouter from "./router/profile.js"
 import path from 'path';
 
 /* Load environment variables */
@@ -37,6 +38,7 @@ app.use(cors({
 app.use("/api/auth/", authRoute);
 app.use("/api/message/", messageRoute);
 app.use("/api/users/", userRoute);
+app.use("/api/profile/",updateRouter)
 
 app.use(express.static(path.join(__dirname,"/frontend/dist")))
 // /* Routes */

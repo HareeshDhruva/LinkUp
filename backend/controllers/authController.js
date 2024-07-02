@@ -4,8 +4,8 @@ import { hashing } from "../utils/bcrypt.js";
 import bcrypt from "bcrypt";
 
 export const register = async (req, res) => {
-  const { fullname, username, email, password, gender, phone } = req.body;
-  if (!fullname || !username || !email || !password || !phone) {
+  const { fullname, email, password, gender } = req.body;
+  if (!fullname || !email || !password || !gender) {
     return res.status(201).json({ message: "Provide all Fields" });
   }
 
@@ -14,18 +14,16 @@ export const register = async (req, res) => {
     if (ExistUser) {
       return res.status(201).json({ message: "Email Already Exist" });
     }
-
     const hasedPassword = await hashing(password);
     const user = await User.create({
       fullname,
-      username,
       email: email.toLowerCase(),
-      phone,
       gender,
       password: hasedPassword,
     });
     user.save();
-    res.status(200).json({ message: "register successfully" });
+    tokengeneration(user._id, res);
+    res.status(200).json({ data: user ,message: "register successfully" });
   } catch (err) {
     res.status(201).json({ message: err.message });
   }
@@ -41,7 +39,7 @@ export const login = async (req, res) => {
     if (!user) {
       return res.status(201).json({ message: "User Not Exist" });
     }
-    const validPass = await bcrypt.compare(password, user.password);
+    const validPass = bcrypt.compare(password, user.password);
 
     if (!validPass) {
       return res.status(500).json({ message: "Incorrect Password" });
@@ -55,6 +53,7 @@ export const login = async (req, res) => {
 
 export const logout = (req, res) => {
   try {
+    console.log("response");
     res.cookie("jwt", "", { maxAge: 0 });
     res.status(200).json({ message: "logout successfully" });
   } catch (error) {

@@ -1,6 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Roboto&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+body{
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  background-color: #EEEDEB;
+}
 
 ::-webkit-scrollbar {
     width: 1px;
@@ -15,3 +25,36 @@
     border-radius: 10%;
     visibility: hidden;
   }
+
+  #rgba {
+    color: rgba(0, 0, 0, 0);
+  }
+
+  .footer-title {
+    margin-bottom: 0.5rem /* 8px */;
+    font-weight: 700;
+    text-transform: uppercase;
+    opacity: 0.6;
+}
+
+.link {
+  cursor: pointer;
+  text-decoration-line: underline;
+}
+.link:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+.link:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+@media (hover:hover) {
+  .link-hover:hover {
+      text-decoration-line: underline;
+  }
+}
+.link-hover {
+  text-decoration-line: none;
+}
